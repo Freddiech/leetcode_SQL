@@ -1,0 +1,45 @@
+#  612. Shortest Distance in a Plane
+#  Medium
+#  174
+#  64
+#  Add to List
+
+#Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content##Content#
+
+#  SQL Schema
+#  Table: Point2D
+#  +-------------+------+
+#  | Column Name | Type |
+#  +-------------+------+
+#  | x           | int  |
+#  | y           | int  |
+#  +-------------+------+
+#  (x, y) is the primary key column for this table.
+#  Each row of this table indicates the position of a point on the X-Y plane.
+#    The distance between two points p1(x1, y1) and p2(x2, y2) is sqrt((x2 - x1)2 + (y2 - y1)2).
+#  Write an SQL query to report the shortest distance between any two points from the Point2D table. Round the distance to two decimal points.
+#  The query result format is in the following example.
+#    Example 1:
+#  Input: 
+#  Point2D table:
+#  +----+----+
+#  | x  | y  |
+#  +----+----+
+#  | -1 | -1 |
+#  | 0  | 0  |
+#  | -1 | -2 |
+#  +----+----+
+#  Output: 
+#  +----------+
+#  | shortest |
+#  +----------+
+#  | 1.00     |
+#  +----------+
+#  Explanation: The shortest distance is 1.00 from point (-1, -1) to (-1, 2).
+
+#Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution##Solution#
+
+SELECT ROUND(MIN(POW(POW((t1.x-t2.x),2)+POW((t1.y-t2.y),2),0.5)),2) AS shortest 
+FROM Point2D AS t1
+,Point2D AS t2
+WHERE (t1.x, t1.y) <> (t2.x, t2.y)
